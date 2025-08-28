@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cresça Aqui</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e6f0ff;
+    }
+
+    header {
+      background: radial-gradient(circle at top left, #6fb8ff, #357ab7);
+      color: white;
+      text-align: center;
+      padding: 40px;
+      border-bottom-left-radius: 60% 20%;
+      border-bottom-right-radius: 60% 20%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    header img.logo {
+      height: 140px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    header p {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #eef6ff;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+    }
+
+    .card img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .card h2 {
+      margin: 15px 0;
+      font-size: 22px;
+      color: #2c3e50;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #555;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #4a90e2, #357ab7);
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #5aa2f0, #285e96);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="SmallSquareLogoJpg.jpg" alt="Logo Cresça Aqui" class="logo">
+    <p>Conheça negócios locais e apoie empreendedores!</p>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <img src="https://via.placeholder.com/300x150" alt="Produto 1">
+      <h2>Loja Clip</h2>
+      <p>Materiais escolares e muito mais para você usar sua imaginação.</p>
+      <a href="loja-clip.html" class="btn">Explorar Loja</a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x150" alt="Produto 2">
+      <h2>Loja da Maria</h2>
+      <p>Roupas artesanais feitas com carinho.</p>
+      <a href="loja-maria.html" class="btn">Explorar Loja</a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x150" alt="Produto 3">
+      <h2>Artesanato da Ana</h2>
+      <p>Peças únicas e personalizadas.</p>
+      <a href="artesanato-ana.html" class="btn">Explorar Loja</a>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<!-- Modelo de página interna (loja-clip.html) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja Clip - Cresça Aqui</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7faff; }
+    header { background: #357ab7; color: white; padding: 20px; text-align: center; }
+    .content { padding: 30px; max-width: 800px; margin: auto; }
+    h1 { color: #2c3e50; }
+    .reviews { margin-top: 30px; }
+    .review { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 15px; }
+    .review strong { color: #357ab7; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Loja Clip</h1>
+  </header>
+  <div class="content">
+    <p>Bem-vindo à Loja Clip! Aqui você encontra os melhores materiais escolares, artigos de papelaria e muito mais para sua imaginação voar longe.</p>
+    <h2>Avaliações dos clientes</h2>
+    <div class="reviews">
+      <div class="review"><strong>Ana:</strong> Ótima loja, sempre encontro o que preciso!</div>
+      <div class="review"><strong>João:</strong> Produtos de qualidade e atendimento excelente.</div>
+      <div class="review"><strong>Maria:</strong> Preços acessíveis e muitas opções criativas.</div>
+    </div>
+  </div>
+</body>
+</html>
