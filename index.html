@@ -24,7 +24,7 @@
     }
 
     header img.logo {
-      height: 140px;
+      height: 200px; /* AUMENTEI O TAMANHO DO LOGO */
       display: block;
       margin: 0 auto;
     }
@@ -119,7 +119,7 @@
 
     .reviews p { margin: 8px 0; }
 
-    /* Botão flutuante no canto inferior direito */
+    /* Botão flutuante */
     .floating-btn {
       position: fixed;
       bottom: 20px;
@@ -139,6 +139,64 @@
     .floating-btn:hover {
       background: linear-gradient(135deg, #5aa2f0, #285e96);
       transform: translateY(-3px);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .modal h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .planos {
+      display: grid;
+      gap: 20px;
+    }
+    .plano {
+      background: #f1f8ff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .plano h3 {
+      margin: 0;
+      color: #357ab7;
+    }
+    .plano p {
+      margin: 10px 0;
+      color: #444;
+    }
+    .close-btn {
+      margin-top: 20px;
+      padding: 12px 18px;
+      border: none;
+      background: #357ab7;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .close-btn:hover {
+      background: #285e96;
     }
   </style>
 </head>
@@ -187,29 +245,54 @@
     </div>
   </div>
 
-  <!-- Botão para publicar nova loja -->
-  <a href="https://seulink.com/publicar-loja" class="floating-btn">📢 Publique sua Loja</a>
+  <!-- Botão flutuante -->
+  <a href="#" class="floating-btn" onclick="abrirModal()">📢 Publique sua Loja</a>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Escolha seu Plano</h2>
+      <div class="planos">
+        <div class="plano">
+          <h3>Plano Básico</h3>
+          <p>Sua loja será divulgada no <strong>Instagram</strong>.</p>
+          <p><strong>💰 R$ 49,90</strong></p>
+        </div>
+        <div class="plano">
+          <h3>Plano Intermediário</h3>
+          <p>Sua loja será divulgada no <strong>Instagram</strong> e <strong>TikTok</strong>.</p>
+          <p><strong>💰 R$ 99,90</strong></p>
+        </div>
+        <div class="plano">
+          <h3>Plano Premium</h3>
+          <p>Sua loja será divulgada no <strong>Instagram</strong>, <strong>TikTok</strong> e com <strong>Ads no YouTube</strong>.</p>
+          <p><strong>💰 R$ 199,90</strong></p>
+        </div>
+      </div>
+      <button class="close-btn" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
 
   <script>
     function toggleAvaliacao(event) {
       event.preventDefault();
       const card = event.currentTarget.closest('.card');
-
-      // Fecha outras abertas
       document.querySelectorAll('.card.open').forEach(c => {
         if (c !== card) c.classList.remove('open');
       });
-
-      // Alterna a card atual
       card.classList.toggle('open');
-
-      // Atualiza o texto do botão
       const btn = event.currentTarget;
       btn.textContent = card.classList.contains('open') ? 'Fechar avaliações' : 'Explorar Loja';
+    }
+
+    function abrirModal() {
+      document.getElementById("modal").style.display = "flex";
+    }
+    function fecharModal() {
+      document.getElementById("modal").style.display = "none";
     }
   </script>
 
 </body>
 </html>
-
 
