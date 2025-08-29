@@ -95,7 +95,7 @@
       background: linear-gradient(135deg, #5aa2f0, #285e96);
     }
 
-    /* Caixa de avaliações recolhível (abre para baixo) */
+    /* Caixa de avaliações recolhível */
     .reviews {
       margin-top: 15px;
       background: #f1f8ff;
@@ -107,17 +107,39 @@
       max-height: 0;
       opacity: 0;
       transform: translateY(-8px);
-      padding: 0 14px; /* padding recolhido */
+      padding: 0 14px;
       transition: max-height .5s ease, opacity .3s ease .1s, transform .3s ease .1s, padding .3s ease .1s;
     }
     .card.open .reviews {
-      max-height: 500px; /* grande o suficiente para o conteúdo */
+      max-height: 500px;
       opacity: 1;
       transform: translateY(0);
-      padding: 14px; /* padding quando aberto */
+      padding: 14px;
     }
 
     .reviews p { margin: 8px 0; }
+
+    /* Botão flutuante no canto inferior direito */
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #4a90e2, #357ab7);
+      color: white;
+      padding: 16px 22px;
+      border-radius: 40px;
+      font-weight: bold;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    .floating-btn:hover {
+      background: linear-gradient(135deg, #5aa2f0, #285e96);
+      transform: translateY(-3px);
+    }
   </style>
 </head>
 <body>
@@ -131,12 +153,12 @@
     <div class="card">
       <img src="https://via.placeholder.com/300x150" alt="Produto 1">
       <h2>Pedras do De Boita</h2>
-      <p>Minérios quimicos e muito mais!</p>
-      <a href="#" class="btn" onclick="toggleAvaliacao(event, 'clip')">Explorar Loja</a>
-      <div class="reviews" id="reviews-clip">
+      <p>Minérios químicos e muito mais!</p>
+      <a href="#" class="btn" onclick="toggleAvaliacao(event)">Explorar Loja</a>
+      <div class="reviews">
         <p><strong>Avaliações:</strong></p>
-        <p>⭐️⭐️⭐️⭐️☆ — Boa variedade de produtos.</p>
-        <p>⭐️⭐️⭐️⭐️⭐️ — Atendimento excelente!</p>
+        <p>⭐️⭐️⭐️⭐️☆ — Ótima qualidade das pedras, mas poderiam ampliar o catálogo.</p>
+        <p>⭐️⭐️⭐️⭐️⭐️ — Atendimento super atencioso, recomendo!</p>
       </div>
     </div>
 
@@ -144,11 +166,11 @@
       <img src="https://via.placeholder.com/300x150" alt="Produto 2">
       <h2>Loja de Bitcoin do MathLouza</h2>
       <p>Bitcoin, matemática e muita alegria!</p>
-      <a href="#" class="btn" onclick="toggleAvaliacao(event, 'maria')">Explorar Loja</a>
-      <div class="reviews" id="reviews-maria">
+      <a href="#" class="btn" onclick="toggleAvaliacao(event)">Explorar Loja</a>
+      <div class="reviews">
         <p><strong>Avaliações:</strong></p>
-        <p>⭐️⭐️⭐️⭐️⭐️ — Qualidade impecável!</p>
-        <p>⭐️⭐️⭐️⭐️☆ — Ótimos preços.</p>
+        <p>⭐️⭐️⭐️⭐️⭐️ — Preços justos e muita segurança nas transações.</p>
+        <p>⭐️⭐️⭐️⭐️☆ — Excelente para iniciantes, explicações bem claras.</p>
       </div>
     </div>
 
@@ -156,21 +178,24 @@
       <img src="https://via.placeholder.com/300x150" alt="Produto 3">
       <h2>Pinturas da Carlota</h2>
       <p>Pinturas únicas feitas pela Carlota!</p>
-      <a href="#" class="btn" onclick="toggleAvaliacao(event, 'ana')">Explorar Loja</a>
-      <div class="reviews" id="reviews-ana">
+      <a href="#" class="btn" onclick="toggleAvaliacao(event)">Explorar Loja</a>
+      <div class="reviews">
         <p><strong>Avaliações:</strong></p>
-        <p>⭐️⭐️⭐️⭐️⭐️ — Produtos lindos e exclusivos.</p>
-        <p>⭐️⭐️⭐️⭐️☆ — Entrega rápida e segura.</p>
+        <p>⭐️⭐️⭐️⭐️⭐️ — Obras maravilhosas, dá pra ver o carinho em cada detalhe.</p>
+        <p>⭐️⭐️⭐️⭐️☆ — As pinturas são lindas, mas a entrega poderia ser mais rápida.</p>
       </div>
     </div>
   </div>
 
+  <!-- Botão para publicar nova loja -->
+  <a href="https://seulink.com/publicar-loja" class="floating-btn">📢 Publique sua Loja</a>
+
   <script>
-    function toggleAvaliacao(event, loja) {
+    function toggleAvaliacao(event) {
       event.preventDefault();
       const card = event.currentTarget.closest('.card');
 
-      // Fecha outras abertas (comportamento tipo acordeão)
+      // Fecha outras abertas
       document.querySelectorAll('.card.open').forEach(c => {
         if (c !== card) c.classList.remove('open');
       });
