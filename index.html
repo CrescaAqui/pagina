@@ -24,7 +24,7 @@
     }
 
     header img.logo {
-      height: 200px; /* AUMENTEI O TAMANHO DO LOGO */
+      height: 200px;
       display: block;
       margin: 0 auto;
     }
@@ -95,7 +95,6 @@
       background: linear-gradient(135deg, #5aa2f0, #285e96);
     }
 
-    /* Caixa de avaliações recolhível */
     .reviews {
       margin-top: 15px;
       background: #f1f8ff;
@@ -161,6 +160,11 @@
       max-width: 600px;
       text-align: center;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: slideDown 0.4s ease;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
     .modal h2 {
       margin-bottom: 20px;
@@ -175,6 +179,12 @@
       padding: 20px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .plano:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
     .plano h3 {
       margin: 0;
@@ -253,17 +263,17 @@
     <div class="modal-content">
       <h2>Escolha seu Plano</h2>
       <div class="planos">
-        <div class="plano">
+        <div class="plano" onclick="alert('Você escolheu o Plano Básico!')">
           <h3>Plano Básico</h3>
           <p>Sua loja será divulgada no <strong>Instagram</strong>.</p>
           <p><strong>💰 R$ 49,90</strong></p>
         </div>
-        <div class="plano">
+        <div class="plano" onclick="alert('Você escolheu o Plano Intermediário!')">
           <h3>Plano Intermediário</h3>
           <p>Sua loja será divulgada no <strong>Instagram</strong> e <strong>TikTok</strong>.</p>
           <p><strong>💰 R$ 99,90</strong></p>
         </div>
-        <div class="plano">
+        <div class="plano" onclick="alert('Você escolheu o Plano Premium!')">
           <h3>Plano Premium</h3>
           <p>Sua loja será divulgada no <strong>Instagram</strong>, <strong>TikTok</strong> e com <strong>Ads no YouTube</strong>.</p>
           <p><strong>💰 R$ 199,90</strong></p>
