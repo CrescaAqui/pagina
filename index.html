@@ -56,18 +56,6 @@
       box-shadow: 0 12px 24px rgba(0,0,0,0.18);
     }
 
-    .card.open {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.16);
-    }
-
-    .card img {
-      width: 100%;
-      max-height: 150px;
-      object-fit: cover;
-      border-radius: 18px;
-    }
-
     .card h2 {
       margin: 15px 0;
       font-size: 22px;
@@ -89,58 +77,14 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      cursor: pointer;
     }
 
     .btn:hover {
       background: linear-gradient(135deg, #5aa2f0, #285e96);
     }
 
-    .reviews {
-      margin-top: 15px;
-      background: #f1f8ff;
-      border-radius: 16px;
-      text-align: left;
-      font-size: 14px;
-      color: #333;
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transform: translateY(-8px);
-      padding: 0 14px;
-      transition: max-height .5s ease, opacity .3s ease .1s, transform .3s ease .1s, padding .3s ease .1s;
-    }
-    .card.open .reviews {
-      max-height: 500px;
-      opacity: 1;
-      transform: translateY(0);
-      padding: 14px;
-    }
-
-    .reviews p { margin: 8px 0; }
-
-    /* Botão flutuante */
-    .floating-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(135deg, #4a90e2, #357ab7);
-      color: white;
-      padding: 16px 22px;
-      border-radius: 40px;
-      font-weight: bold;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-      z-index: 1000;
-    }
-
-    .floating-btn:hover {
-      background: linear-gradient(135deg, #5aa2f0, #285e96);
-      transform: translateY(-3px);
-    }
-
-    /* Modal */
+    /* Modal loja */
     .modal {
       display: none;
       position: fixed;
@@ -157,43 +101,53 @@
       padding: 30px;
       border-radius: 20px;
       width: 90%;
-      max-width: 600px;
+      max-width: 750px;
       text-align: center;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       animation: slideDown 0.4s ease;
+      max-height: 90vh;
+      overflow-y: auto;
     }
     @keyframes slideDown {
       from { transform: translateY(-50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
+
     .modal h2 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       color: #2c3e50;
     }
-    .planos {
+
+    .catalogo {
+      margin: 20px 0;
       display: grid;
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
     }
-    .plano {
+    .item {
+      padding: 12px;
       background: #f1f8ff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
     }
-    .plano:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    .item img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 8px;
     }
-    .plano h3 {
-      margin: 0;
-      color: #357ab7;
+    .item strong { color: #357ab7; display: block; margin-top: 4px; }
+
+    .reviews {
+      margin-top: 20px;
+      background: #eef6ff;
+      border-radius: 14px;
+      padding: 15px;
+      text-align: left;
     }
-    .plano p {
-      margin: 10px 0;
-      color: #444;
-    }
+
     .close-btn {
       margin-top: 20px;
       padding: 12px 18px;
@@ -221,87 +175,99 @@
     <div class="card">
       <h2>Pedras do De Boita</h2>
       <p>Minérios químicos e muito mais!</p>
-      <a href="#" class="btn" onclick="toggleAvaliacao(event)">Explorar Loja</a>
-      <div class="reviews">
-        <p><strong>Avaliações:</strong></p>
-        <p>⭐️⭐️⭐️⭐️☆ — Ótima qualidade das pedras, mas poderiam ampliar o catálogo.</p>
-        <p>⭐️⭐️⭐️⭐️⭐️ — Atendimento super atencioso, recomendo!</p>
-      </div>
+      <button class="btn" onclick="abrirLoja('Pedras do De Boita')">Explorar Loja</button>
     </div>
 
     <div class="card">
-      <h2>Loja de Bitcoin do MathLouza</h2>
-      <p>Bitcoin, matemática e muita alegria!</p>
-      <a href="#" class="btn" onclick="toggleAvaliacao(event)">Explorar Loja</a>
-      <div class="reviews">
-        <p><strong>Avaliações:</strong></p>
-        <p>⭐️⭐️⭐️⭐️⭐️ — Preços justos e muita segurança nas transações.</p>
-        <p>⭐️⭐️⭐️⭐️☆ — Excelente para iniciantes, explicações bem claras.</p>
-      </div>
+      <h2>Livraria do Deivis</h2>
+      <p>Livros novos e usados, histórias para todos os gostos!</p>
+      <button class="btn" onclick="abrirLoja('Livraria do Deivis')">Explorar Loja</button>
     </div>
 
     <div class="card">
       <h2>Pinturas da Carlota</h2>
       <p>Pinturas únicas feitas pela Carlota!</p>
-      <a href="#" class="btn" onclick="toggleAvaliacao(event)">Explorar Loja</a>
-      <div class="reviews">
-        <p><strong>Avaliações:</strong></p>
-        <p>⭐️⭐️⭐️⭐️⭐️ — Obras maravilhosas, dá pra ver o carinho em cada detalhe.</p>
-        <p>⭐️⭐️⭐️⭐️☆ — As pinturas são lindas, mas a entrega poderia ser mais rápida.</p>
-      </div>
+      <button class="btn" onclick="abrirLoja('Pinturas da Carlota')">Explorar Loja</button>
     </div>
   </div>
 
-  <!-- Botão flutuante -->
-  <a href="#" class="floating-btn" onclick="abrirModal()">📢 Publique sua Loja</a>
-
-  <!-- Modal -->
-  <div id="modal" class="modal" style="display:none;">
-    <div class="modal-content">
-      <h2>Escolha seu Plano</h2>
-      <div class="planos">
-        <div class="plano" onclick="alert('Você escolheu o Plano Básico!')">
-          <h3>Plano Básico</h3>
-          <p>Sua loja será divulgada no <strong>Instagram</strong>.</p>
-          <p><strong>💰 R$ 49,90</strong></p>
-        </div>
-        <div class="plano" onclick="alert('Você escolheu o Plano Intermediário!')">
-          <h3>Plano Intermediário</h3>
-          <p>Sua loja será divulgada no <strong>Instagram</strong> e <strong>TikTok</strong>.</p>
-          <p><strong>💰 R$ 99,90</strong></p>
-        </div>
-        <div class="plano" onclick="alert('Você escolheu o Plano Premium!')">
-          <h3>Plano Premium</h3>
-          <p>Sua loja será divulgada no <strong>Instagram</strong>, <strong>TikTok</strong> e com <strong>Ads no YouTube</strong>.</p>
-          <p><strong>💰 R$ 199,90</strong></p>
-        </div>
-      </div>
-      <button class="close-btn" onclick="fecharModal()">Fechar</button>
+  <!-- Modal da Loja -->
+  <div id="modalLoja" class="modal" style="display:none;">
+    <div class="modal-content" id="conteudoLoja">
+      <!-- Conteúdo da loja vai aqui via JS -->
     </div>
   </div>
 
   <script>
-    function toggleAvaliacao(event) {
-      event.preventDefault();
-      const card = event.currentTarget.closest('.card');
-      document.querySelectorAll('.card.open').forEach(c => {
-        if (c !== card) c.classList.remove('open');
-      });
-      card.classList.toggle('open');
-      const btn = event.currentTarget;
-      btn.textContent = card.classList.contains('open') ? 'Fechar avaliações' : 'Explorar Loja';
+    function abrirLoja(nome) {
+      const modal = document.getElementById("modalLoja");
+      const conteudo = document.getElementById("conteudoLoja");
+
+      let catalogoHTML = "";
+      let avaliacoesHTML = "";
+
+      if (nome === "Pedras do De Boita") {
+        catalogoHTML = `
+          <div class="catalogo">
+            <div class="item"><img src="https://via.placeholder.com/150x100/87CEFA" alt=""><strong>Pedra Azul</strong>R$ 50</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100/FF6347" alt=""><strong>Pedra Vermelha</strong>R$ 70</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100/FFD700" alt=""><strong>Pedra Dourada</strong>R$ 120</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100/32CD32" alt=""><strong>Pedra Verde</strong>R$ 90</div>
+          </div>`;
+        avaliacoesHTML = `
+          <div class="reviews">
+            <p><strong>Avaliações:</strong></p>
+            <p>⭐️⭐️⭐️⭐️☆ — Ótima qualidade das pedras, mas poderiam ampliar o catálogo.</p>
+            <p>⭐️⭐️⭐️⭐️⭐️ — Atendimento super atencioso, recomendo!</p>
+          </div>`;
+      }
+
+      if (nome === "Livraria do Deivis") {
+        catalogoHTML = `
+          <div class="catalogo">
+            <div class="item"><img src="https://via.placeholder.com/150x100" alt=""><strong>Livro Romance</strong>R$ 40</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100" alt=""><strong>Livro Técnico</strong>R$ 80</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100" alt=""><strong>HQs</strong>R$ 25</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100" alt=""><strong>Livro Infantil</strong>R$ 30</div>
+          </div>`;
+        avaliacoesHTML = `
+          <div class="reviews">
+            <p><strong>Avaliações:</strong></p>
+            <p>⭐️⭐️⭐️⭐️⭐️ — Ótima seleção de livros, preços justos!</p>
+            <p>⭐️⭐️⭐️⭐️☆ — Atendimento bom, mas faltam alguns títulos novos.</p>
+          </div>`;
+      }
+
+      if (nome === "Pinturas da Carlota") {
+        catalogoHTML = `
+          <div class="catalogo">
+            <div class="item"><img src="https://via.placeholder.com/150x100" alt=""><strong>Pintura Floral</strong>R$ 200</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100" alt=""><strong>Pintura Abstrata</strong>R$ 350</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100" alt=""><strong>Pintura Paisagem</strong>R$ 280</div>
+            <div class="item"><img src="https://via.placeholder.com/150x100" alt=""><strong>Pintura Retrato</strong>R$ 400</div>
+          </div>`;
+        avaliacoesHTML = `
+          <div class="reviews">
+            <p><strong>Avaliações:</strong></p>
+            <p>⭐️⭐️⭐️⭐️⭐️ — Obras maravilhosas, dá pra ver o carinho em cada detalhe.</p>
+            <p>⭐️⭐️⭐️⭐️☆ — As pinturas são lindas, mas a entrega poderia ser mais rápida.</p>
+          </div>`;
+      }
+
+      conteudo.innerHTML = `
+        <h2>${nome}</h2>
+        ${catalogoHTML}
+        ${avaliacoesHTML}
+        <button class="close-btn" onclick="fecharLoja()">Fechar</button>
+      `;
+
+      modal.style.display = "flex";
     }
 
-    function abrirModal() {
-      document.getElementById("modal").style.display = "flex";
-    }
-    function fecharModal() {
-      document.getElementById("modal").style.display = "none";
+    function fecharLoja() {
+      document.getElementById("modalLoja").style.display = "none";
     }
   </script>
 
 </body>
 </html>
-
-
-
