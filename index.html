@@ -203,6 +203,54 @@
     @keyframes fadeInUp {
       from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);}
     }
+
+    /* BOTÃO FIXO */
+    .publish-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #ff6a00, #ff9500);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      z-index: 3000;
+    }
+    .publish-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #ff7e1a, #ffb347);
+    }
+
+    /* Modal de planos */
+    .planos {
+      display: grid;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .plano {
+      background: #f9fbff;
+      border: 2px solid #357ab7;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .plano:hover {
+      transform: scale(1.03);
+      background: #eef6ff;
+    }
+    .plano h3 {
+      margin-bottom: 10px;
+      color: #285e96;
+    }
+    .plano p {
+      font-size: 15px;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -235,9 +283,34 @@
   <!-- Modal da Loja -->
   <div id="modalLoja" class="modal" style="display:none;">
     <div class="modal-content" id="conteudoLoja">
-      <!-- Conteúdo da loja vai aqui via JS -->
     </div>
   </div>
+
+  <!-- Modal Publicar Loja -->
+  <div id="modalPublicar" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>📢 Publique sua Loja</h2>
+      <p>Escolha o plano ideal para divulgar o seu negócio:</p>
+      <div class="planos">
+        <div class="plano">
+          <h3>Plano Básico - R$ 99</h3>
+          <p>Sua loja será divulgada no <strong>Instagram</strong>.</p>
+        </div>
+        <div class="plano">
+          <h3>Plano Intermediário - R$ 199</h3>
+          <p>Sua loja será divulgada no <strong>Instagram + TikTok</strong>.</p>
+        </div>
+        <div class="plano">
+          <h3>Plano Premium - R$ 399</h3>
+          <p>Sua loja será divulgada no <strong>Instagram + TikTok + Ads no YouTube</strong>.</p>
+        </div>
+      </div>
+      <button class="close-btn" onclick="fecharPublicar()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Botão fixo -->
+  <button class="publish-btn" onclick="abrirPublicar()">📢 Publique sua loja</button>
 
   <script>
     function abrirLoja(nome) {
@@ -307,6 +380,13 @@
 
     function fecharLoja() {
       document.getElementById("modalLoja").style.display = "none";
+    }
+
+    function abrirPublicar() {
+      document.getElementById("modalPublicar").style.display = "flex";
+    }
+    function fecharPublicar() {
+      document.getElementById("modalPublicar").style.display = "none";
     }
   </script>
 
