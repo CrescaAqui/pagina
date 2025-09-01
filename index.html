@@ -4,84 +4,105 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cresça Aqui</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: #e6f0ff;
+      background: #f4f8ff;
+      color: #333;
     }
 
+    /* Header */
     header {
-      background: radial-gradient(circle at top left, #6fb8ff, #357ab7);
+      background: linear-gradient(120deg, #4a90e2, #357ab7, #6fb8ff);
+      background-size: 400% 400%;
+      animation: gradientMove 8s ease infinite;
       color: white;
       text-align: center;
-      padding: 40px;
+      padding: 50px 20px;
       border-bottom-left-radius: 60% 20%;
       border-bottom-right-radius: 60% 20%;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      position: relative;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header img.logo {
-      height: 200px;
+      height: 160px;
       display: block;
-      margin: 0 auto;
+      margin: 0 auto 15px;
+      animation: fadeIn 2s ease;
     }
 
     header p {
-      margin-top: 15px;
-      font-size: 18px;
-      color: #eef6ff;
+      font-size: 20px;
+      color: #f9fcff;
+      animation: fadeInUp 2s ease;
     }
 
+    /* Container de cards */
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      padding: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 50px;
     }
 
     .card {
       background: white;
       border-radius: 25px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-      padding: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      padding: 25px 20px;
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
     }
 
     .card h2 {
-      margin: 15px 0;
+      margin: 15px 0 10px;
       font-size: 22px;
       color: #2c3e50;
     }
 
     .card p {
       font-size: 15px;
-      color: #555;
+      color: #666;
+      margin-bottom: 15px;
     }
 
+    /* Botão */
     .btn {
       display: inline-block;
-      margin-top: 14px;
-      padding: 12px 20px;
+      padding: 12px 22px;
       background: linear-gradient(135deg, #4a90e2, #357ab7);
       color: white;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
       cursor: pointer;
+      transition: 0.3s;
+      animation: pulse 2s infinite;
     }
 
     .btn:hover {
       background: linear-gradient(135deg, #5aa2f0, #285e96);
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(74, 144, 226, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
     }
 
     /* Modal loja */
@@ -100,21 +121,21 @@
       background: white;
       padding: 30px;
       border-radius: 20px;
-      width: 90%;
+      width: 95%;
       max-width: 750px;
       text-align: center;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      animation: slideDown 0.4s ease;
+      animation: slideDown 0.5s ease;
       max-height: 90vh;
       overflow-y: auto;
     }
     @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
+      from { transform: translateY(-60px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
 
     .modal h2 {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       color: #2c3e50;
     }
 
@@ -122,14 +143,18 @@
       margin: 20px 0;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
+      gap: 20px;
     }
     .item {
       padding: 12px;
       background: #f1f8ff;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       text-align: center;
+      transition: transform 0.3s;
+    }
+    .item:hover {
+      transform: scale(1.05);
     }
     .item img {
       width: 100%;
@@ -138,19 +163,27 @@
       border-radius: 10px;
       margin-bottom: 8px;
     }
-    .item strong { color: #357ab7; display: block; margin-top: 4px; }
+    .item strong {
+      color: #357ab7;
+      display: block;
+      margin-top: 4px;
+    }
 
+    /* Avaliações */
     .reviews {
-      margin-top: 20px;
+      margin-top: 25px;
       background: #eef6ff;
       border-radius: 14px;
-      padding: 15px;
+      padding: 18px;
       text-align: left;
+    }
+    .reviews p {
+      margin: 6px 0;
     }
 
     .close-btn {
-      margin-top: 20px;
-      padding: 12px 18px;
+      margin-top: 25px;
+      padding: 12px 22px;
       border: none;
       background: #357ab7;
       color: white;
@@ -161,6 +194,14 @@
     }
     .close-btn:hover {
       background: #285e96;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0} to {opacity:1}
+    }
+    @keyframes fadeInUp {
+      from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);}
     }
   </style>
 </head>
@@ -168,24 +209,24 @@
 
   <header>
     <img src="Adobe Express - file.png" alt="Logo Cresça Aqui" class="logo">
-    <p>Conheça negócios locais e apoie empreendedores!</p>
+    <p>✨ Conheça negócios locais e apoie empreendedores! ✨</p>
   </header>
 
   <div class="container">
     <div class="card">
-      <h2>Pedras do De Boita</h2>
+      <h2>💎 Pedras do De Boita</h2>
       <p>Minérios químicos e muito mais!</p>
       <button class="btn" onclick="abrirLoja('Pedras do De Boita')">Explorar Loja</button>
     </div>
 
     <div class="card">
-      <h2>Livraria do Deivis</h2>
+      <h2>📚 Livraria do Deivis</h2>
       <p>Livros novos e usados, histórias para todos os gostos!</p>
       <button class="btn" onclick="abrirLoja('Livraria do Deivis')">Explorar Loja</button>
     </div>
 
     <div class="card">
-      <h2>Pinturas da Carlota</h2>
+      <h2>🎨 Pinturas da Carlota</h2>
       <p>Pinturas únicas feitas pela Carlota!</p>
       <button class="btn" onclick="abrirLoja('Pinturas da Carlota')">Explorar Loja</button>
     </div>
@@ -217,8 +258,8 @@
         avaliacoesHTML = `
           <div class="reviews">
             <p><strong>Avaliações:</strong></p>
-            <p>⭐️⭐️⭐️⭐️☆ — Ótima qualidade das pedras, mas poderiam ampliar o catálogo.</p>
-            <p>⭐️⭐️⭐️⭐️⭐️ — Atendimento super atencioso, recomendo!</p>
+            <p>⭐⭐⭐⭐☆ — Ótima qualidade das pedras, mas poderiam ampliar o catálogo.</p>
+            <p>⭐⭐⭐⭐⭐ — Atendimento super atencioso, recomendo!</p>
           </div>`;
       }
 
@@ -233,8 +274,8 @@
         avaliacoesHTML = `
           <div class="reviews">
             <p><strong>Avaliações:</strong></p>
-            <p>⭐️⭐️⭐️⭐️⭐️ — Ótima seleção de livros, preços justos!</p>
-            <p>⭐️⭐️⭐️⭐️☆ — Atendimento bom, mas faltam alguns títulos novos.</p>
+            <p>⭐⭐⭐⭐⭐ — Ótima seleção de livros, preços justos!</p>
+            <p>⭐⭐⭐⭐☆ — Atendimento bom, mas faltam alguns títulos novos.</p>
           </div>`;
       }
 
@@ -249,8 +290,8 @@
         avaliacoesHTML = `
           <div class="reviews">
             <p><strong>Avaliações:</strong></p>
-            <p>⭐️⭐️⭐️⭐️⭐️ — Obras maravilhosas, dá pra ver o carinho em cada detalhe.</p>
-            <p>⭐️⭐️⭐️⭐️☆ — As pinturas são lindas, mas a entrega poderia ser mais rápida.</p>
+            <p>⭐⭐⭐⭐⭐ — Obras maravilhosas, dá pra ver o carinho em cada detalhe.</p>
+            <p>⭐⭐⭐⭐☆ — As pinturas são lindas, mas a entrega poderia ser mais rápida.</p>
           </div>`;
       }
 
